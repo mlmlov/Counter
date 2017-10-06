@@ -1,0 +1,22 @@
+/**/
+#counter{
+    text-align: center;
+    margin-top: 200px;
+}
+
+#count_up_button{
+    width: 170px;
+    height: 42px;
+}
+
+#count_down_button{
+    margin-top: 50px;
+    width: 170px;
+    height: 42px;
+}
+
+#reset{
+    margin-top: 100px;
+    width:140px;
+    height: 42px;
+}

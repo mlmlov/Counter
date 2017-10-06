@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+       var count = 0;
+        $(function(){
+            $('#count_up_button').on('touchend',function(){
+                if(count<9999){
+                    count++;
+                }
+                console.log("+count:" + count);
+                img_update();
+            })
+            
+            $('#count_down_button').on('touchend',function(){
+                if(count>0){
+                    count--;    
+                }
+                
+                console.log("-count:" + count);
+                img_update();
+            })
+            $('#reset').on('touchend',function(){
+                count=0;
+                img_update();
+            })
+        })
+        
+        //カウンタの画像を更新する
+        function img_update(){
+            //例:1　→0001
+            //　 123→0123
+            
+            // var sen  =Math.floor(count/1000);
+            // var hyaku=Math.floor(count%1000/100);
+            // var ju   =Math.floor(count%1000%100/10);
+            // var ichi =Math.floor(count%1000%100%10);
+             
+            // $("#counter").text("");
+            // $("#counter").append("<img src='img/no_0"+sen+".png' width='55'>");
+            // $("#counter").append("<img src='img/no_0"+hyaku+".png' width='55'>");
+            // $("#counter").append("<img src='img/no_0"+ju+".png' width='55'>");
+            // $("#counter").append("<img src='img/no_0"+ichi+".png' width='55'>");
+            
+            var str ='0000' + count;
+            str = str.substring(str.length-4, str.length);
+            
+            $('#1keta').attr('src','img/no_0' + str[3] + '.png');
+            $('#2keta').attr('src','img/no_0' + str[2] + '.png');
+            $('#3keta').attr('src','img/no_0' + str[1] + '.png');
+            $('#4keta').attr('src','img/no_0' + str[0] + '.png');
+       }
+    </script>
+</head>
+<body>
+
+    <div id="counter">
+        <img src="img/no_00.png" width="55" id="4keta">
+        <img src="img/no_00.png" width="55" id="3keta">
+        <img src="img/no_00.png" width="55" id="2keta">
+        <img src="img/no_00.png" width="55" id="1keta">
+    </div>
+<div>
+    <button id="reset"><img src="img/btn_reset_normal.png"></button>
+</div>
+<button id="count_up_button"><img src="img/btn_count_up.gif" width="127"></button>
+<button id="count_down_button"><img src="img/btn_count_down.gif" width="127"></button>
+
+</body>
+</html>
